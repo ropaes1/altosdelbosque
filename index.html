@@ -1,0 +1,1875 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Altos del Bosque — Cuenca, Ecuador</title>
+<meta name="description" content="Terrenos exclusivos desde 700 m² en la urbanización más selecta de Cuenca. Vistas panorámicas a los Andes, infraestructura completa, a 10 minutos del centro histórico UNESCO.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════
+   ALTOS DEL BOSQUE — Luxury Real Estate Website
+   Aesthetic: Refined Andean Luxury
+   ═══════════════════════════════════════════════ */
+
+:root {
+  --gold: #B8953A;
+  --gold-light: #D4B85A;
+  --gold-pale: #F5EDD6;
+  --forest: #1A2E1A;
+  --forest-mid: #2D4A2D;
+  --forest-light: #3D5C3D;
+  --cream: #FAF7F0;
+  --cream-warm: #F5F0E3;
+  --stone: #8A7E6B;
+  --stone-light: #A69D8B;
+  --charcoal: #1C1C1C;
+  --text: #2A2A2A;
+  --text-light: #6B6B6B;
+  --white: #FFFFFF;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Manrope', -apple-system, sans-serif;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--cream);
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+/* ── Selection ── */
+::selection { background: var(--gold-pale); color: var(--forest); }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+/* ── Utility ── */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.container-wide { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
+
+/* ═══════════════════════════
+   NAVIGATION
+   ═══════════════════════════ */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1.5rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.6s var(--ease-out);
+}
+
+.nav.scrolled {
+  background: rgba(26, 46, 26, 0.95);
+  backdrop-filter: blur(20px);
+  padding: 1rem 3rem;
+  box-shadow: 0 2px 40px rgba(0,0,0,0.15);
+}
+
+.nav-logo {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.nav-logo-text {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--white);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.nav-logo-sub {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  color: var(--gold-light);
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.4s var(--ease-out);
+}
+
+.nav-links a:hover { color: var(--gold-light); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-cta {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--gold) !important;
+  border: 1px solid var(--gold);
+  padding: 0.6rem 1.5rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.4s var(--ease-out);
+}
+
+.nav-cta:hover {
+  background: var(--gold);
+  color: var(--forest) !important;
+}
+
+.nav-cta::after { display: none !important; }
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1001;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.hamburger span {
+  width: 28px;
+  height: 1.5px;
+  background: var(--white);
+  transition: all 0.4s var(--ease-out);
+  transform-origin: center;
+}
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(4px, -5px); }
+
+/* ═══════════════════════════
+   HERO SECTION
+   ═══════════════════════════ */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 700px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg,
+      rgba(26,46,26,0.85) 0%,
+      rgba(26,46,26,0.5) 40%,
+      rgba(26,46,26,0.3) 70%,
+      rgba(184,149,58,0.15) 100%
+    ),
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900"><defs><linearGradient id="a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="%231A2E1A"/><stop offset="0.4" stop-color="%232D4A2D"/><stop offset="0.7" stop-color="%233D5C3D"/><stop offset="1" stop-color="%234A6B4A"/></linearGradient><linearGradient id="b" x1="0" y1="0" x2="1" y2="0.3"><stop offset="0" stop-color="%23B8953A" stop-opacity="0.1"/><stop offset="1" stop-color="%23B8953A" stop-opacity="0.3"/></linearGradient></defs><rect fill="url(%23a)" width="1600" height="900"/><path d="M0 600 Q200 450 400 520 Q600 380 800 480 Q1000 350 1200 420 Q1400 300 1600 400 L1600 900 L0 900Z" fill="%231A2E1A" opacity="0.3"/><path d="M0 650 Q300 550 600 600 Q900 500 1200 560 Q1400 480 1600 530 L1600 900 L0 900Z" fill="%231A2E1A" opacity="0.2"/><circle cx="1300" cy="150" r="80" fill="url(%23b)"/></svg>');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Animated grain texture */
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+  pointer-events: none;
+}
+
+/* Decorative mountain silhouettes */
+.hero-mountains {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 35%;
+  pointer-events: none;
+}
+
+.hero-mountains svg {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 4rem 6rem;
+  max-width: 900px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s var(--ease-out) 0.5s forwards;
+}
+
+.hero-badge-line {
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.hero-badge-text {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--gold-light);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.05;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1.2s var(--ease-out) 0.7s forwards;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.8;
+  max-width: 550px;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s var(--ease-out) 1s forwards;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s var(--ease-out) 1.2s forwards;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--forest);
+  background: var(--gold);
+  padding: 1rem 2.2rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.4s var(--ease-out);
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(184,149,58,0.3);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.8);
+  padding: 1rem 0;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.3s;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.btn-ghost:hover { color: var(--gold-light); }
+
+.btn-arrow {
+  display: inline-block;
+  width: 20px;
+  height: 1px;
+  background: currentColor;
+  position: relative;
+  transition: width 0.3s var(--ease-out);
+}
+
+.btn-arrow::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: -3px;
+  width: 7px;
+  height: 7px;
+  border-right: 1px solid currentColor;
+  border-top: 1px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.btn-primary:hover .btn-arrow,
+.btn-ghost:hover .btn-arrow { width: 30px; }
+
+/* Hero scroll indicator */
+.hero-scroll {
+  position: absolute;
+  bottom: 2.5rem;
+  right: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 2;
+  opacity: 0;
+  animation: fadeUp 1s var(--ease-out) 1.5s forwards;
+}
+
+.hero-scroll-text {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  writing-mode: vertical-rl;
+}
+
+.hero-scroll-line {
+  width: 1px;
+  height: 50px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 1; height: 50px; }
+  50% { opacity: 0.4; height: 30px; }
+}
+
+/* ═══════════════════════════
+   INTRO / VISION SECTION
+   ═══════════════════════════ */
+.intro {
+  padding: 8rem 0;
+  background: var(--cream);
+  position: relative;
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.intro-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.intro-tag-line { width: 40px; height: 1px; background: var(--gold); }
+
+.intro-tag-text {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.intro-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 400;
+  color: var(--forest);
+  line-height: 1.2;
+  margin-bottom: 2rem;
+}
+
+.intro-heading em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.intro-text {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--text-light);
+  line-height: 1.9;
+  margin-bottom: 1.5rem;
+}
+
+.intro-visual {
+  position: relative;
+}
+
+.intro-visual-main {
+  width: 100%;
+  aspect-ratio: 4/5;
+  background:
+    linear-gradient(170deg,
+      var(--forest) 0%,
+      var(--forest-mid) 40%,
+      var(--forest-light) 100%
+    );
+  position: relative;
+  overflow: hidden;
+}
+
+.intro-visual-main::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 70%, rgba(184,149,58,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 30%, rgba(255,255,255,0.05) 0%, transparent 50%);
+}
+
+.intro-visual-main::after {
+  content: 'Vista panorámica desde Altos del Bosque hacia los Andes';
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-style: italic;
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+}
+
+/* SVG landscape inside the visual */
+.intro-landscape {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+}
+
+.intro-landscape svg { width: 100%; height: 70%; }
+
+.intro-visual-accent {
+  position: absolute;
+  top: -2rem;
+  right: -2rem;
+  width: 120px;
+  height: 120px;
+  border: 1px solid var(--gold);
+  opacity: 0.3;
+}
+
+.intro-visual-label {
+  position: absolute;
+  bottom: -1rem;
+  left: -1rem;
+  background: var(--gold);
+  color: var(--forest);
+  padding: 1rem 1.5rem;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* ═══════════════════════════
+   CUENCA SECTION
+   ═══════════════════════════ */
+.cuenca {
+  padding: 8rem 0;
+  background: var(--forest);
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+.cuenca::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  border: 1px solid rgba(184,149,58,0.08);
+  border-radius: 50%;
+}
+
+.cuenca-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 5rem;
+}
+
+.cuenca-header .intro-tag { justify-content: center; }
+
+.cuenca-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.cuenca-heading em { font-style: italic; color: var(--gold-light); }
+
+.cuenca-sub {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.8;
+}
+
+.cuenca-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-bottom: 5rem;
+}
+
+.cuenca-stat {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  border: 1px solid rgba(184,149,58,0.15);
+  transition: all 0.5s var(--ease-out);
+  position: relative;
+  overflow: hidden;
+}
+
+.cuenca-stat::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  background: rgba(184,149,58,0.05);
+  transition: height 0.5s var(--ease-out);
+}
+
+.cuenca-stat:hover::before { height: 100%; }
+
+.cuenca-stat:hover { border-color: var(--gold); }
+
+.cuenca-stat-number {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--gold-light);
+  line-height: 1;
+  margin-bottom: 0.75rem;
+  position: relative;
+}
+
+.cuenca-stat-label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  position: relative;
+}
+
+.cuenca-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+}
+
+.cuenca-feature {
+  padding: 2rem 0;
+  border-top: 1px solid rgba(184,149,58,0.2);
+}
+
+.cuenca-feature-icon {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.cuenca-feature-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 0.75rem;
+}
+
+.cuenca-feature-text {
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+}
+
+/* ═══════════════════════════
+   DEVELOPMENT / LOTS SECTION
+   ═══════════════════════════ */
+.development {
+  padding: 8rem 0;
+  background: var(--cream-warm);
+}
+
+.dev-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: end;
+  margin-bottom: 5rem;
+}
+
+.dev-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 400;
+  color: var(--forest);
+  line-height: 1.2;
+}
+
+.dev-heading em { font-style: italic; color: var(--gold); }
+
+.dev-header-text {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--text-light);
+  line-height: 1.8;
+}
+
+.dev-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 5rem;
+}
+
+.dev-feature {
+  background: var(--white);
+  padding: 2.5rem;
+  position: relative;
+  transition: all 0.5s var(--ease-out);
+}
+
+.dev-feature::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gold);
+  transition: width 0.6s var(--ease-out);
+}
+
+.dev-feature:hover::before { width: 100%; }
+
+.dev-feature:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.06); }
+
+.dev-feature-number {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.dev-feature-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 0.75rem;
+}
+
+.dev-feature-text {
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+/* Lot overview panel */
+.lots-panel {
+  background: var(--forest);
+  padding: 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.lots-info h3 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 1.5rem;
+}
+
+.lots-info h3 em { font-style: italic; color: var(--gold-light); }
+
+.lots-detail {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.lots-detail-label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  min-width: 120px;
+}
+
+.lots-detail-value {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--white);
+}
+
+.lots-detail-value span {
+  color: var(--gold-light);
+}
+
+.lots-cta {
+  text-align: center;
+}
+
+.lots-cta-text {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.lots-cta .btn-primary {
+  display: inline-flex;
+}
+
+/* ═══════════════════════════
+   LIFESTYLE SECTION
+   ═══════════════════════════ */
+.lifestyle {
+  padding: 8rem 0;
+  background: var(--cream);
+}
+
+.lifestyle-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 5rem;
+}
+
+.lifestyle-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 400;
+  color: var(--forest);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.lifestyle-heading em { font-style: italic; color: var(--gold); }
+
+.lifestyle-sub {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--text-light);
+  line-height: 1.8;
+}
+
+.lifestyle-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.lifestyle-card {
+  position: relative;
+  padding: 3rem;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  transition: transform 0.5s var(--ease-out);
+}
+
+.lifestyle-card:hover { transform: scale(0.98); }
+
+.lifestyle-card-bg {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.8s var(--ease-out);
+}
+
+.lifestyle-card:hover .lifestyle-card-bg { transform: scale(1.05); }
+
+.lifestyle-card-1 .lifestyle-card-bg {
+  background: linear-gradient(135deg, var(--forest) 0%, #2D4A2D 50%, #3D5C3D 100%);
+}
+
+.lifestyle-card-2 .lifestyle-card-bg {
+  background: linear-gradient(135deg, #4A3520 0%, #6B4D30 50%, #8B6940 100%);
+}
+
+.lifestyle-card-3 .lifestyle-card-bg {
+  background: linear-gradient(135deg, #1A3040 0%, #2A4A5A 50%, #3A6070 100%);
+}
+
+.lifestyle-card-4 .lifestyle-card-bg {
+  background: linear-gradient(135deg, #3A2A1A 0%, #5A4A30 50%, #7A6A40 100%);
+}
+
+.lifestyle-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%);
+  z-index: 1;
+}
+
+.lifestyle-card-content {
+  position: relative;
+  z-index: 2;
+}
+
+.lifestyle-card-tag {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--gold-light);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.lifestyle-card-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+
+.lifestyle-card-text {
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.7;
+}
+
+/* ═══════════════════════════
+   INVESTMENT SECTION
+   ═══════════════════════════ */
+.investment {
+  padding: 8rem 0;
+  background: var(--white);
+}
+
+.invest-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.invest-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 400;
+  color: var(--forest);
+  line-height: 1.2;
+  margin-bottom: 2rem;
+}
+
+.invest-heading em { font-style: italic; color: var(--gold); }
+
+.invest-text {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--text-light);
+  line-height: 1.9;
+  margin-bottom: 1.5rem;
+}
+
+.invest-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.invest-highlight {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 1.8rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.invest-highlight-icon {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--gold);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--gold);
+}
+
+.invest-highlight-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 0.3rem;
+}
+
+.invest-highlight-text {
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════
+   CONTACT SECTION
+   ═══════════════════════════ */
+.contact {
+  padding: 8rem 0;
+  background: var(--forest);
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact::before {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: -100px;
+  width: 400px;
+  height: 400px;
+  border: 1px solid rgba(184,149,58,0.06);
+  border-radius: 50%;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+}
+
+.contact-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.contact-heading em { font-style: italic; color: var(--gold-light); }
+
+.contact-text {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-detail {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.contact-detail-icon {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(184,149,58,0.3);
+}
+
+.contact-detail-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--gold);
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.contact-detail-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 0.2rem;
+}
+
+.contact-detail-value {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--white);
+}
+
+.contact-detail-value a {
+  color: var(--white);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.contact-detail-value a:hover { color: var(--gold-light); }
+
+/* Contact Form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group { position: relative; }
+
+.form-group label {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 0.9rem 0;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--white);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255,255,255,0.25);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-bottom-color: var(--gold);
+}
+
+.form-group select option {
+  background: var(--forest);
+  color: var(--white);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.form-submit {
+  margin-top: 0.5rem;
+}
+
+.form-submit .btn-primary {
+  width: 100%;
+  justify-content: center;
+}
+
+/* ═══════════════════════════
+   FOOTER
+   ═══════════════════════════ */
+.footer {
+  padding: 3rem 0;
+  background: var(--charcoal);
+  text-align: center;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 2rem;
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--white);
+  letter-spacing: 0.1em;
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.footer-links a {
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.4);
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover { color: var(--gold); }
+
+.footer-copy {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.25);
+}
+
+/* ═══════════════════════════
+   SCROLL ANIMATIONS
+   ═══════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════
+   RESPONSIVE
+   ═══════════════════════════ */
+@media (max-width: 1024px) {
+  .nav { padding: 1.2rem 2rem; }
+  .nav.scrolled { padding: 0.8rem 2rem; }
+  .hero-content { padding: 0 2rem 5rem; }
+  .hero-scroll { display: none; }
+  .intro-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .intro-visual { order: -1; }
+  .cuenca-stats { grid-template-columns: repeat(2, 1fr); }
+  .cuenca-features { grid-template-columns: repeat(2, 1fr); }
+  .dev-header { grid-template-columns: 1fr; gap: 1.5rem; }
+  .dev-features { grid-template-columns: repeat(2, 1fr); }
+  .lots-panel { grid-template-columns: 1fr; }
+  .invest-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+
+  .nav-links.mobile-open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(26,46,26,0.98);
+    backdrop-filter: blur(20px);
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    z-index: 999;
+  }
+
+  .nav-links.mobile-open a {
+    font-size: 1rem;
+    color: var(--white);
+  }
+
+  .hero-title { font-size: 2.5rem; }
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+  .cuenca-stats { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .cuenca-features { grid-template-columns: 1fr; }
+  .dev-features { grid-template-columns: 1fr; }
+  .lifestyle-grid { grid-template-columns: 1fr; }
+  .lots-panel { padding: 2.5rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-top { flex-direction: column; gap: 1.5rem; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+}
+
+@media (max-width: 480px) {
+  .container, .container-wide { padding: 0 1.25rem; }
+  .nav { padding: 1rem 1.25rem; }
+  .hero-content { padding: 0 1.25rem 4rem; }
+  .cuenca-stat { padding: 1.5rem 1rem; }
+  .lots-panel { padding: 2rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════
+     NAVIGATION
+     ═══════════════════════════ -->
+<nav class="nav" id="nav">
+  <div class="nav-logo">
+    <span class="nav-logo-text">Altos del Bosque</span>
+    <span class="nav-logo-sub">Cuenca &middot; Ecuador</span>
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#vision">Visión</a></li>
+    <li><a href="#cuenca">Cuenca</a></li>
+    <li><a href="#desarrollo">Desarrollo</a></li>
+    <li><a href="#estilo">Estilo de Vida</a></li>
+    <li><a href="#inversion">Inversión</a></li>
+    <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ═══════════════════════════
+     HERO
+     ═══════════════════════════ -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+
+  <!-- Mountain silhouette SVG -->
+  <div class="hero-mountains">
+    <svg viewBox="0 0 1600 400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 400 L0 280 Q100 200 200 240 Q300 180 450 220 Q550 140 700 190 Q800 130 950 170 Q1050 100 1200 160 Q1300 110 1400 140 Q1500 100 1600 130 L1600 400Z" fill="rgba(26,46,26,0.2)"/>
+      <path d="M0 400 L0 320 Q150 270 300 290 Q450 240 600 270 Q750 210 900 260 Q1050 190 1200 240 Q1350 200 1500 220 L1600 200 L1600 400Z" fill="rgba(26,46,26,0.15)"/>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="hero-badge-line"></span>
+      <span class="hero-badge-text">Urbanización Exclusiva &middot; Río Amarillo</span>
+    </div>
+    <h1 class="hero-title">
+      Donde los Andes<br>se encuentran con<br><em>su visión</em>
+    </h1>
+    <p class="hero-subtitle">
+      Terrenos desde 700&nbsp;m² en seis hectáreas privadas, a diez minutos del centro histórico de Cuenca — Patrimonio de la Humanidad por la UNESCO.
+    </p>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn-primary">
+        Solicitar catálogo <span class="btn-arrow"></span>
+      </a>
+      <a href="#vision" class="btn-ghost">
+        Descubrir más <span class="btn-arrow"></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span class="hero-scroll-text">Scroll</span>
+    <span class="hero-scroll-line"></span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════
+     INTRO / VISION
+     ═══════════════════════════ -->
+<section class="intro" id="vision">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-content">
+        <div class="intro-tag reveal">
+          <span class="intro-tag-line"></span>
+          <span class="intro-tag-text">La Visión</span>
+        </div>
+        <h2 class="intro-heading reveal reveal-delay-1">
+          Un hogar excepcional comienza con un <em>terreno excepcional</em>
+        </h2>
+        <p class="intro-text reveal reveal-delay-2">
+          Enclavada en las colinas de Río Amarillo, Altos del Bosque es una urbanización privada de seis hectáreas diseñada para quienes entienden que la calidad de vida se construye desde los cimientos — literalmente.
+        </p>
+        <p class="intro-text reveal reveal-delay-3">
+          Aquí, el paisaje andino se convierte en el lienzo de su futuro hogar. Cada parcela ha sido trazada para maximizar las vistas panorámicas, la luz natural y la privacidad, brindándole la libertad de crear la residencia que siempre imaginó: ya sea una villa contemporánea con muros de cristal enmarcando las montañas, o una casa de campo con jardines que se funden con el bosque circundante.
+        </p>
+      </div>
+      <div class="intro-visual reveal">
+        <div class="intro-visual-main">
+          <div class="intro-landscape">
+            <svg viewBox="0 0 600 420" xmlns="http://www.w3.org/2000/svg">
+              <!-- Sky gradient -->
+              <defs>
+                <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="rgba(184,149,58,0.1)"/>
+                  <stop offset="1" stop-color="transparent"/>
+                </linearGradient>
+              </defs>
+              <!-- Distant mountains -->
+              <path d="M0 280 Q50 200 120 230 Q180 170 250 210 Q320 150 400 190 Q460 130 530 170 Q570 150 600 160 L600 420 L0 420Z" fill="rgba(255,255,255,0.06)"/>
+              <!-- Mid mountains -->
+              <path d="M0 320 Q80 260 160 290 Q240 230 340 270 Q420 210 500 250 Q560 220 600 240 L600 420 L0 420Z" fill="rgba(255,255,255,0.04)"/>
+              <!-- Foreground hills with trees -->
+              <path d="M0 370 Q100 330 200 350 Q300 310 400 340 Q500 310 600 330 L600 420 L0 420Z" fill="rgba(184,149,58,0.08)"/>
+              <!-- Sun/moon -->
+              <circle cx="460" cy="140" r="30" fill="rgba(184,149,58,0.15)"/>
+              <circle cx="460" cy="140" r="40" fill="none" stroke="rgba(184,149,58,0.06)" stroke-width="1"/>
+            </svg>
+          </div>
+        </div>
+        <div class="intro-visual-accent"></div>
+        <div class="intro-visual-label">6 hectáreas</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════
+     CUENCA
+     ═══════════════════════════ -->
+<section class="cuenca" id="cuenca">
+  <div class="container">
+    <div class="cuenca-header">
+      <div class="intro-tag reveal" style="justify-content:center">
+        <span class="intro-tag-line"></span>
+        <span class="intro-tag-text">La Ciudad</span>
+      </div>
+      <h2 class="cuenca-heading reveal reveal-delay-1">
+        Cuenca: <em>La Atenas de los Andes</em>
+      </h2>
+      <p class="cuenca-sub reveal reveal-delay-2">
+        Declarada Patrimonio Cultural de la Humanidad por la UNESCO en 1999, Cuenca es reconocida mundialmente por su arquitectura colonial, su clima primaveral eterno, su gastronomía emergente y una comunidad internacional en crecimiento que la ha elegido como hogar.
+      </p>
+    </div>
+
+    <div class="cuenca-stats reveal">
+      <div class="cuenca-stat">
+        <div class="cuenca-stat-number">UNESCO</div>
+        <div class="cuenca-stat-label">Patrimonio de la Humanidad</div>
+      </div>
+      <div class="cuenca-stat">
+        <div class="cuenca-stat-number">18°C</div>
+        <div class="cuenca-stat-label">Clima primaveral eterno</div>
+      </div>
+      <div class="cuenca-stat">
+        <div class="cuenca-stat-number">2.560m</div>
+        <div class="cuenca-stat-label">Altitud sobre el nivel del mar</div>
+      </div>
+      <div class="cuenca-stat">
+        <div class="cuenca-stat-number">10 min</div>
+        <div class="cuenca-stat-label">Al centro histórico</div>
+      </div>
+    </div>
+
+    <div class="cuenca-features">
+      <div class="cuenca-feature reveal">
+        <div class="cuenca-feature-icon">&#9968;</div>
+        <div class="cuenca-feature-title">Patrimonio Vivo</div>
+        <p class="cuenca-feature-text">Calles empedradas, catedrales centenarias, mercados artesanales y una escena cultural vibrante que mezcla tradición indígena con influencias coloniales españolas.</p>
+      </div>
+      <div class="cuenca-feature reveal reveal-delay-1">
+        <div class="cuenca-feature-icon">&#127793;</div>
+        <div class="cuenca-feature-title">Naturaleza Extraordinaria</div>
+        <p class="cuenca-feature-text">A 30 minutos del Parque Nacional El Cajas, con más de 235 lagunas glaciares, páramos andinos y una biodiversidad que incluye al cóndor andino y colibríes gigantes.</p>
+      </div>
+      <div class="cuenca-feature reveal reveal-delay-2">
+        <div class="cuenca-feature-icon">&#127758;</div>
+        <div class="cuenca-feature-title">Comunidad Internacional</div>
+        <p class="cuenca-feature-text">Reconocida consistentemente como uno de los mejores destinos de retiro del mundo. Una comunidad diversa de expatriados que enriquece la vida social y cultural de la ciudad.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════
+     DEVELOPMENT
+     ═══════════════════════════ -->
+<section class="development" id="desarrollo">
+  <div class="container">
+    <div class="dev-header">
+      <div>
+        <div class="intro-tag reveal">
+          <span class="intro-tag-line"></span>
+          <span class="intro-tag-text">El Desarrollo</span>
+        </div>
+        <h2 class="dev-heading reveal reveal-delay-1">
+          Diseñado para quienes valoran la <em>excelencia</em>
+        </h2>
+      </div>
+      <p class="dev-header-text reveal reveal-delay-2">
+        Altos del Bosque no es simplemente una urbanización — es un compromiso con la calidad. Cada elemento ha sido planificado para proteger el valor de su inversión y garantizar un entorno donde vivir sea un privilegio.
+      </p>
+    </div>
+
+    <div class="dev-features">
+      <div class="dev-feature reveal">
+        <div class="dev-feature-number">700+</div>
+        <div class="dev-feature-title">Metros cuadrados por terreno</div>
+        <p class="dev-feature-text">Parcelas generosas con frentes de 20 metros que permiten diseños arquitectónicos ambiciosos: amplios jardines, piscina, terrazas y áreas exteriores.</p>
+      </div>
+      <div class="dev-feature reveal reveal-delay-1">
+        <div class="dev-feature-number">6 ha</div>
+        <div class="dev-feature-title">Hectáreas de terreno urbanizado</div>
+        <p class="dev-feature-text">Infraestructura completa: vías asfaltadas, aceras, alumbrado, agua potable, alcantarillado, telefonía y conectividad de datos.</p>
+      </div>
+      <div class="dev-feature reveal reveal-delay-2">
+        <div class="dev-feature-number">1–2</div>
+        <div class="dev-feature-title">Viviendas por lote</div>
+        <p class="dev-feature-text">Línea de fábrica aprobada que permite construir una o dos viviendas por parcela, adaptando el proyecto a sus necesidades familiares o de inversión.</p>
+      </div>
+    </div>
+
+    <div class="lots-panel reveal">
+      <div class="lots-info">
+        <h3>Parcelas <em>disponibles</em></h3>
+        <div class="lots-detail">
+          <span class="lots-detail-label">Superficie</span>
+          <span class="lots-detail-value">Desde <span>693</span> hasta <span>731</span> m²</span>
+        </div>
+        <div class="lots-detail">
+          <span class="lots-detail-label">Frente</span>
+          <span class="lots-detail-value"><span>20</span> metros</span>
+        </div>
+        <div class="lots-detail">
+          <span class="lots-detail-label">Precio</span>
+          <span class="lots-detail-value">Desde <span>$190.700</span> USD</span>
+        </div>
+        <div class="lots-detail">
+          <span class="lots-detail-label">Entrada</span>
+          <span class="lots-detail-value">Desde <span>$57.300</span> USD</span>
+        </div>
+        <div class="lots-detail" style="border:none">
+          <span class="lots-detail-label">Financiamiento</span>
+          <span class="lots-detail-value"><span>Disponible</span></span>
+        </div>
+      </div>
+      <div class="lots-cta">
+        <p class="lots-cta-text">
+          Quedan pocas parcelas disponibles en esta fase del desarrollo. Solicite el catálogo completo con el plano maestro, dimensiones y orientación de cada lote.
+        </p>
+        <a href="#contacto" class="btn-primary">
+          Solicitar catálogo completo <span class="btn-arrow"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════
+     LIFESTYLE
+     ═══════════════════════════ -->
+<section class="lifestyle" id="estilo">
+  <div class="container">
+    <div class="lifestyle-header">
+      <div class="intro-tag reveal" style="justify-content:center">
+        <span class="intro-tag-line"></span>
+        <span class="intro-tag-text">Estilo de Vida</span>
+      </div>
+      <h2 class="lifestyle-heading reveal reveal-delay-1">
+        Más que un terreno, <em>un estilo de vida</em>
+      </h2>
+      <p class="lifestyle-sub reveal reveal-delay-2">
+        Altos del Bosque le ofrece el equilibrio perfecto entre la serenidad del entorno natural y la conectividad con todo lo que Cuenca y los Andes tienen para ofrecer.
+      </p>
+    </div>
+
+    <div class="lifestyle-grid">
+      <div class="lifestyle-card lifestyle-card-1 reveal">
+        <div class="lifestyle-card-bg"></div>
+        <div class="lifestyle-card-overlay"></div>
+        <div class="lifestyle-card-content">
+          <div class="lifestyle-card-tag">Naturaleza</div>
+          <h3 class="lifestyle-card-title">Rodeado de Bosque Nativo</h3>
+          <p class="lifestyle-card-text">Vegetación nativa preservada, topografía ondulada y vistas panorámicas a los Andes que convierten cada terreno en un refugio privado.</p>
+        </div>
+      </div>
+      <div class="lifestyle-card lifestyle-card-2 reveal reveal-delay-1">
+        <div class="lifestyle-card-bg"></div>
+        <div class="lifestyle-card-overlay"></div>
+        <div class="lifestyle-card-content">
+          <div class="lifestyle-card-tag">Gastronomía</div>
+          <h3 class="lifestyle-card-title">Sabores de los Andes</h3>
+          <p class="lifestyle-card-text">Una escena culinaria emergente que combina ingredientes andinos ancestrales con técnicas contemporáneas. Mercados artesanales, restaurantes premiados y cafés de especialidad.</p>
+        </div>
+      </div>
+      <div class="lifestyle-card lifestyle-card-3 reveal">
+        <div class="lifestyle-card-bg"></div>
+        <div class="lifestyle-card-overlay"></div>
+        <div class="lifestyle-card-content">
+          <div class="lifestyle-card-tag">Aventura</div>
+          <h3 class="lifestyle-card-title">Puerta a los Andes</h3>
+          <p class="lifestyle-card-text">Senderismo en El Cajas, ruinas incaicas de Ingapirca, termas naturales en Baños, observación de aves y ciclismo de montaña — todo a su alcance.</p>
+        </div>
+      </div>
+      <div class="lifestyle-card lifestyle-card-4 reveal reveal-delay-1">
+        <div class="lifestyle-card-bg"></div>
+        <div class="lifestyle-card-overlay"></div>
+        <div class="lifestyle-card-content">
+          <div class="lifestyle-card-tag">Cultura</div>
+          <h3 class="lifestyle-card-title">Herencia y Artesanía</h3>
+          <p class="lifestyle-card-text">Cuna del sombrero de paja toquilla (Panama hat), textiles ancestrales, cerámica artesanal y una vida cultural vibrante con festivales, galerías y música en vivo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════
+     INVESTMENT
+     ═══════════════════════════ -->
+<section class="investment" id="inversion">
+  <div class="container">
+    <div class="invest-grid">
+      <div>
+        <div class="intro-tag reveal">
+          <span class="intro-tag-line"></span>
+          <span class="intro-tag-text">Su Inversión</span>
+        </div>
+        <h2 class="invest-heading reveal reveal-delay-1">
+          Una inversión con <em>visión de futuro</em>
+        </h2>
+        <p class="invest-text reveal reveal-delay-2">
+          Río Amarillo es uno de los corredores de mayor plusvalía en Cuenca, con un crecimiento sostenido que refleja la demanda creciente de propiedades premium en la ciudad. Altos del Bosque combina ubicación privilegiada con infraestructura completa y flexibilidad constructiva.
+        </p>
+        <p class="invest-text reveal reveal-delay-3">
+          Ya sea que busque construir la residencia de sus sueños o una inversión inmobiliaria sólida, cada lote ofrece el potencial de construir hasta dos viviendas con línea de fábrica aprobada.
+        </p>
+      </div>
+      <div class="invest-highlights reveal">
+        <div class="invest-highlight">
+          <div class="invest-highlight-icon">&#9670;</div>
+          <div>
+            <div class="invest-highlight-title">Alta Plusvalía</div>
+            <p class="invest-highlight-text">Ubicación en uno de los sectores de mayor apreciación de la ciudad, con crecimiento continuo del valor inmobiliario.</p>
+          </div>
+        </div>
+        <div class="invest-highlight">
+          <div class="invest-highlight-icon">&#9670;</div>
+          <div>
+            <div class="invest-highlight-title">Infraestructura Completa</div>
+            <p class="invest-highlight-text">Vías asfaltadas, servicios básicos, alumbrado y conectividad — listo para construir sin costos ocultos de urbanización.</p>
+          </div>
+        </div>
+        <div class="invest-highlight">
+          <div class="invest-highlight-icon">&#9670;</div>
+          <div>
+            <div class="invest-highlight-title">Flexibilidad Constructiva</div>
+            <p class="invest-highlight-text">Línea de fábrica aprobada para una o dos viviendas por lote. Ideal para residencia propia, inversión en renta o desarrollo.</p>
+          </div>
+        </div>
+        <div class="invest-highlight">
+          <div class="invest-highlight-icon">&#9670;</div>
+          <div>
+            <div class="invest-highlight-title">Financiamiento Directo</div>
+            <p class="invest-highlight-text">Opciones de financiamiento disponibles con entradas desde $57.300 USD. Le acompañamos en cada paso del proceso.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════
+     CONTACT
+     ═══════════════════════════ -->
+<section class="contact" id="contacto">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <div class="intro-tag reveal">
+          <span class="intro-tag-line"></span>
+          <span class="intro-tag-text">Contacto</span>
+        </div>
+        <h2 class="contact-heading reveal reveal-delay-1">
+          Dé el <em>primer paso</em>
+        </h2>
+        <p class="contact-text reveal reveal-delay-2">
+          Agende una visita privada al desarrollo y descubra en persona por qué Altos del Bosque es el lugar donde comienza su próximo capítulo. Nuestro equipo lo acompañará desde la selección de su terreno hasta la planificación de su proyecto.
+        </p>
+        <div class="contact-details reveal reveal-delay-3">
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke-linecap="round" stroke-linejoin="round"/><polyline points="22,6 12,13 2,6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Email</div>
+              <div class="contact-detail-value"><a href="mailto:altosdelbosque@gmail.com">altosdelbosque@gmail.com</a></div>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="10" r="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Ubicación</div>
+              <div class="contact-detail-value">Río Amarillo, Cuenca, Ecuador</div>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-linecap="round" stroke-linejoin="round"/><polyline points="12 6 12 12 16 14" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Visitas</div>
+              <div class="contact-detail-value">Lunes a Sábado, previa cita</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form reveal" id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" placeholder="Su nombre completo" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="correo@ejemplo.com" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <input type="tel" id="telefono" placeholder="+593 999 999 999">
+          </div>
+          <div class="form-group">
+            <label for="interes">Interés</label>
+            <select id="interes">
+              <option value="">Seleccione...</option>
+              <option value="compra">Compra para residencia</option>
+              <option value="inversion">Inversión</option>
+              <option value="construccion">Compra + construcción</option>
+              <option value="info">Información general</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" placeholder="Cuéntenos sobre su proyecto o haga sus preguntas..."></textarea>
+        </div>
+        <div class="form-submit">
+          <button type="submit" class="btn-primary">
+            Enviar solicitud <span class="btn-arrow"></span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════
+     FOOTER
+     ═══════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-logo">Altos del Bosque</div>
+      <ul class="footer-links">
+        <li><a href="#vision">Visión</a></li>
+        <li><a href="#cuenca">Cuenca</a></li>
+        <li><a href="#desarrollo">Desarrollo</a></li>
+        <li><a href="#estilo">Estilo de Vida</a></li>
+        <li><a href="#inversion">Inversión</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+    <p class="footer-copy">&copy; 2026 Altos del Bosque. Todos los derechos reservados. Río Amarillo, Cuenca, Ecuador.</p>
+  </div>
+</footer>
+
+<script>
+// ── Navigation scroll effect ──
+const nav = document.getElementById('nav');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+  nav.classList.toggle('scrolled', currentScroll > 60);
+  lastScroll = currentScroll;
+});
+
+// ── Hamburger menu ──
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  navLinks.classList.toggle('mobile-open');
+});
+
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navLinks.classList.remove('mobile-open');
+  });
+});
+
+// ── Scroll reveal ──
+const revealElements = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+revealElements.forEach(el => observer.observe(el));
+
+// ── Smooth scroll for all anchor links ──
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      const offset = 80;
+      const position = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top: position, behavior: 'smooth' });
+    }
+  });
+});
+
+// ── Form handling ──
+function handleSubmit(e) {
+  e.preventDefault();
+  const nombre = document.getElementById('nombre').value;
+  const email = document.getElementById('email').value;
+  const telefono = document.getElementById('telefono').value;
+  const interes = document.getElementById('interes').value;
+  const mensaje = document.getElementById('mensaje').value;
+
+  // Build mailto link as fallback
+  const subject = encodeURIComponent('Consulta - Altos del Bosque');
+  const body = encodeURIComponent(
+    `Nombre: ${nombre}\nEmail: ${email}\nTeléfono: ${telefono}\nInterés: ${interes}\n\nMensaje:\n${mensaje}`
+  );
+  window.location.href = `mailto:altosdelbosque@gmail.com?subject=${subject}&body=${body}`;
+
+  // Show confirmation
+  const btn = e.target.querySelector('.btn-primary');
+  const originalHTML = btn.innerHTML;
+  btn.innerHTML = '✓ &nbsp;Mensaje preparado';
+  btn.style.background = '#1E8449';
+  setTimeout(() => {
+    btn.innerHTML = originalHTML;
+    btn.style.background = '';
+  }, 3000);
+}
+
+// ── Parallax-lite on hero ──
+window.addEventListener('scroll', () => {
+  const scroll = window.pageYOffset;
+  const heroBg = document.querySelector('.hero-bg');
+  if (heroBg && scroll < window.innerHeight) {
+    heroBg.style.transform = `translateY(${scroll * 0.3}px)`;
+  }
+});
+</script>
+
+</body>
+</html>
