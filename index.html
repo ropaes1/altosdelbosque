@@ -1311,6 +1311,73 @@ body {
   .cuenca-stat { padding: 1.5rem 1rem; }
   .lots-panel { padding: 2rem 1.5rem; }
 }
+
+/* ═══════════════════════════
+   LANGUAGE TOGGLE
+   ═══════════════════════════ */
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  user-select: none;
+  margin-right: 0.5rem;
+}
+
+.lang-label {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  transition: color 0.3s;
+  line-height: 1;
+}
+
+.lang-label.active { color: var(--gold-light); }
+
+.lang-switch {
+  position: relative;
+  width: 36px;
+  height: 18px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 9px;
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: all 0.4s var(--ease-out);
+  flex-shrink: 0;
+}
+
+.lang-switch::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  background: var(--gold);
+  border-radius: 50%;
+  transition: transform 0.4s var(--ease-out);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+
+.lang-toggle[data-lang="en"] .lang-switch::after {
+  transform: translateX(18px);
+}
+
+.lang-toggle[data-lang="en"] .lang-switch {
+  background: rgba(184,149,58,0.2);
+  border-color: rgba(184,149,58,0.3);
+}
+
+@media (max-width: 768px) {
+  .lang-toggle {
+    position: fixed;
+    top: 1.1rem;
+    right: 4rem;
+    z-index: 1001;
+  }
+}
 </style>
 </head>
 <body>
@@ -1323,14 +1390,21 @@ body {
     <span class="nav-logo-text">Altos del Bosque</span>
     <span class="nav-logo-sub">Cuenca &middot; Ecuador</span>
   </div>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#vision">Visión</a></li>
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <div class="lang-toggle" id="langToggle" data-lang="es" role="button" tabindex="0" aria-label="Switch language">
+      <span class="lang-label active" id="langEs">ES</span>
+      <div class="lang-switch"></div>
+      <span class="lang-label" id="langEn">EN</span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+    <li><a href="#vision" data-i18n="nav_vision">Visión</a></li>
     <li><a href="#cuenca">Cuenca</a></li>
-    <li><a href="#desarrollo">Desarrollo</a></li>
-    <li><a href="#estilo">Estilo de Vida</a></li>
-    <li><a href="#inversion">Inversión</a></li>
-    <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+    <li><a href="#desarrollo" data-i18n="nav_development">Desarrollo</a></li>
+    <li><a href="#estilo" data-i18n="nav_lifestyle">Estilo de Vida</a></li>
+    <li><a href="#inversion" data-i18n="nav_investment">Inversión</a></li>
+    <li><a href="#contacto" class="nav-cta" data-i18n="nav_contact">Contacto</a></li>
   </ul>
+  </div>
   <button class="hamburger" id="hamburger" aria-label="Menú">
     <span></span><span></span><span></span>
   </button>
@@ -1353,19 +1427,19 @@ body {
   <div class="hero-content">
     <div class="hero-badge">
       <span class="hero-badge-line"></span>
-      <span class="hero-badge-text">Urbanización Exclusiva &middot; Río Amarillo</span>
+      <span class="hero-badge-text" data-i18n="hero_badge">Urbanización Exclusiva &middot; Río Amarillo</span>
     </div>
-    <h1 class="hero-title">
+    <h1 class="hero-title" data-i18n="hero_title">
       Donde los Andes<br>se encuentran con<br><em>su visión</em>
     </h1>
-    <p class="hero-subtitle">
+    <p class="hero-subtitle" data-i18n="hero_subtitle">
       Terrenos desde 700&nbsp;m² en seis hectáreas privadas, a diez minutos del centro histórico de Cuenca — Patrimonio de la Humanidad por la UNESCO.
     </p>
     <div class="hero-actions">
-      <a href="#contacto" class="btn-primary">
+      <a href="#contacto" class="btn-primary" data-i18n="hero_cta">
         Solicitar catálogo <span class="btn-arrow"></span>
       </a>
-      <a href="#vision" class="btn-ghost">
+      <a href="#vision" class="btn-ghost" data-i18n="hero_cta2">
         Descubrir más <span class="btn-arrow"></span>
       </a>
     </div>
@@ -1386,15 +1460,15 @@ body {
       <div class="intro-content">
         <div class="intro-tag reveal">
           <span class="intro-tag-line"></span>
-          <span class="intro-tag-text">La Visión</span>
+          <span class="intro-tag-text" data-i18n="vision_tag">La Visión</span>
         </div>
-        <h2 class="intro-heading reveal reveal-delay-1">
+        <h2 class="intro-heading reveal reveal-delay-1" data-i18n="vision_heading">
           Un hogar excepcional comienza con un <em>terreno excepcional</em>
         </h2>
-        <p class="intro-text reveal reveal-delay-2">
+        <p class="intro-text reveal reveal-delay-2" data-i18n="vision_text1">
           Enclavada en las colinas de Río Amarillo, Altos del Bosque es una urbanización privada de seis hectáreas diseñada para quienes entienden que la calidad de vida se construye desde los cimientos — literalmente.
         </p>
-        <p class="intro-text reveal reveal-delay-3">
+        <p class="intro-text reveal reveal-delay-3" data-i18n="vision_text2">
           Aquí, el paisaje andino se convierte en el lienzo de su futuro hogar. Cada parcela ha sido trazada para maximizar las vistas panorámicas, la luz natural y la privacidad, brindándole la libertad de crear la residencia que siempre imaginó: ya sea una villa contemporánea con muros de cristal enmarcando las montañas, o una casa de campo con jardines que se funden con el bosque circundante.
         </p>
       </div>
@@ -1422,7 +1496,7 @@ body {
           </div>
         </div>
         <div class="intro-visual-accent"></div>
-        <div class="intro-visual-label">6 hectáreas</div>
+        <div class="intro-visual-label" data-i18n="vision_label">6 hectáreas</div>
       </div>
     </div>
   </div>
@@ -1436,12 +1510,12 @@ body {
     <div class="cuenca-header">
       <div class="intro-tag reveal" style="justify-content:center">
         <span class="intro-tag-line"></span>
-        <span class="intro-tag-text">La Ciudad</span>
+        <span class="intro-tag-text" data-i18n="cuenca_tag">La Ciudad</span>
       </div>
-      <h2 class="cuenca-heading reveal reveal-delay-1">
+      <h2 class="cuenca-heading reveal reveal-delay-1" data-i18n="cuenca_heading">
         Cuenca: <em>La Atenas de los Andes</em>
       </h2>
-      <p class="cuenca-sub reveal reveal-delay-2">
+      <p class="cuenca-sub reveal reveal-delay-2" data-i18n="cuenca_sub">
         Declarada Patrimonio Cultural de la Humanidad por la UNESCO en 1999, Cuenca es reconocida mundialmente por su arquitectura colonial, su clima primaveral eterno, su gastronomía emergente y una comunidad internacional en crecimiento que la ha elegido como hogar.
       </p>
     </div>
@@ -1449,37 +1523,37 @@ body {
     <div class="cuenca-stats reveal">
       <div class="cuenca-stat">
         <div class="cuenca-stat-number">UNESCO</div>
-        <div class="cuenca-stat-label">Patrimonio de la Humanidad</div>
+        <div class="cuenca-stat-label" data-i18n="cuenca_stat1">Patrimonio de la Humanidad</div>
       </div>
       <div class="cuenca-stat">
         <div class="cuenca-stat-number">18°C</div>
-        <div class="cuenca-stat-label">Clima primaveral eterno</div>
+        <div class="cuenca-stat-label" data-i18n="cuenca_stat2">Clima primaveral eterno</div>
       </div>
       <div class="cuenca-stat">
         <div class="cuenca-stat-number">2.560m</div>
-        <div class="cuenca-stat-label">Altitud sobre el nivel del mar</div>
+        <div class="cuenca-stat-label" data-i18n="cuenca_stat3">Altitud sobre el nivel del mar</div>
       </div>
       <div class="cuenca-stat">
         <div class="cuenca-stat-number">10 min</div>
-        <div class="cuenca-stat-label">Al centro histórico</div>
+        <div class="cuenca-stat-label" data-i18n="cuenca_stat4">Al centro histórico</div>
       </div>
     </div>
 
     <div class="cuenca-features">
       <div class="cuenca-feature reveal">
         <div class="cuenca-feature-icon">&#9968;</div>
-        <div class="cuenca-feature-title">Patrimonio Vivo</div>
-        <p class="cuenca-feature-text">Calles empedradas, catedrales centenarias, mercados artesanales y una escena cultural vibrante que mezcla tradición indígena con influencias coloniales españolas.</p>
+        <div class="cuenca-feature-title" data-i18n="cuenca_f1_title">Patrimonio Vivo</div>
+        <p class="cuenca-feature-text" data-i18n="cuenca_f1_text">Calles empedradas, catedrales centenarias, mercados artesanales y una escena cultural vibrante que mezcla tradición indígena con influencias coloniales españolas.</p>
       </div>
       <div class="cuenca-feature reveal reveal-delay-1">
         <div class="cuenca-feature-icon">&#127793;</div>
-        <div class="cuenca-feature-title">Naturaleza Extraordinaria</div>
-        <p class="cuenca-feature-text">A 30 minutos del Parque Nacional El Cajas, con más de 235 lagunas glaciares, páramos andinos y una biodiversidad que incluye al cóndor andino y colibríes gigantes.</p>
+        <div class="cuenca-feature-title" data-i18n="cuenca_f2_title">Naturaleza Extraordinaria</div>
+        <p class="cuenca-feature-text" data-i18n="cuenca_f2_text">A 30 minutos del Parque Nacional El Cajas, con más de 235 lagunas glaciares, páramos andinos y una biodiversidad que incluye al cóndor andino y colibríes gigantes.</p>
       </div>
       <div class="cuenca-feature reveal reveal-delay-2">
         <div class="cuenca-feature-icon">&#127758;</div>
-        <div class="cuenca-feature-title">Comunidad Internacional</div>
-        <p class="cuenca-feature-text">Reconocida consistentemente como uno de los mejores destinos de retiro del mundo. Una comunidad diversa de expatriados que enriquece la vida social y cultural de la ciudad.</p>
+        <div class="cuenca-feature-title" data-i18n="cuenca_f3_title">Comunidad Internacional</div>
+        <p class="cuenca-feature-text" data-i18n="cuenca_f3_text">Reconocida consistentemente como uno de los mejores destinos de retiro del mundo. Una comunidad diversa de expatriados que enriquece la vida social y cultural de la ciudad.</p>
       </div>
     </div>
   </div>
@@ -1494,13 +1568,13 @@ body {
       <div>
         <div class="intro-tag reveal">
           <span class="intro-tag-line"></span>
-          <span class="intro-tag-text">El Desarrollo</span>
+          <span class="intro-tag-text" data-i18n="dev_tag">El Desarrollo</span>
         </div>
-        <h2 class="dev-heading reveal reveal-delay-1">
+        <h2 class="dev-heading reveal reveal-delay-1" data-i18n="dev_heading">
           Diseñado para quienes valoran la <em>excelencia</em>
         </h2>
       </div>
-      <p class="dev-header-text reveal reveal-delay-2">
+      <p class="dev-header-text reveal reveal-delay-2" data-i18n="dev_sub">
         Altos del Bosque no es simplemente una urbanización — es un compromiso con la calidad. Cada elemento ha sido planificado para proteger el valor de su inversión y garantizar un entorno donde vivir sea un privilegio.
       </p>
     </div>
@@ -1508,50 +1582,50 @@ body {
     <div class="dev-features">
       <div class="dev-feature reveal">
         <div class="dev-feature-number">700+</div>
-        <div class="dev-feature-title">Metros cuadrados por terreno</div>
-        <p class="dev-feature-text">Parcelas generosas con frentes de 20 metros que permiten diseños arquitectónicos ambiciosos: amplios jardines, piscina, terrazas y áreas exteriores.</p>
+        <div class="dev-feature-title" data-i18n="dev_f1_title">Metros cuadrados por terreno</div>
+        <p class="dev-feature-text" data-i18n="dev_f1_text">Parcelas generosas con frentes de 20 metros que permiten diseños arquitectónicos ambiciosos: amplios jardines, piscina, terrazas y áreas exteriores.</p>
       </div>
       <div class="dev-feature reveal reveal-delay-1">
         <div class="dev-feature-number">6 ha</div>
-        <div class="dev-feature-title">Hectáreas de terreno urbanizado</div>
-        <p class="dev-feature-text">Infraestructura completa: vías asfaltadas, aceras, alumbrado, agua potable, alcantarillado, telefonía y conectividad de datos.</p>
+        <div class="dev-feature-title" data-i18n="dev_f2_title">Hectáreas de terreno urbanizado</div>
+        <p class="dev-feature-text" data-i18n="dev_f2_text">Infraestructura completa: vías asfaltadas, aceras, alumbrado, agua potable, alcantarillado, telefonía y conectividad de datos.</p>
       </div>
       <div class="dev-feature reveal reveal-delay-2">
         <div class="dev-feature-number">1–2</div>
-        <div class="dev-feature-title">Viviendas por lote</div>
-        <p class="dev-feature-text">Línea de fábrica aprobada que permite construir una o dos viviendas por parcela, adaptando el proyecto a sus necesidades familiares o de inversión.</p>
+        <div class="dev-feature-title" data-i18n="dev_f3_title">Viviendas por lote</div>
+        <p class="dev-feature-text" data-i18n="dev_f3_text">Línea de fábrica aprobada que permite construir una o dos viviendas por parcela, adaptando el proyecto a sus necesidades familiares o de inversión.</p>
       </div>
     </div>
 
     <div class="lots-panel reveal">
       <div class="lots-info">
-        <h3>Parcelas <em>disponibles</em></h3>
+        <h3 data-i18n="lots_title">Parcelas <em>disponibles</em></h3>
         <div class="lots-detail">
-          <span class="lots-detail-label">Superficie</span>
-          <span class="lots-detail-value">Desde <span>693</span> hasta <span>731</span> m²</span>
+          <span class="lots-detail-label" data-i18n="lots_area">Superficie</span>
+          <span class="lots-detail-value" data-i18n="lots_area_val">Desde <span>693</span> hasta <span>731</span> m²</span>
         </div>
         <div class="lots-detail">
-          <span class="lots-detail-label">Frente</span>
-          <span class="lots-detail-value"><span>20</span> metros</span>
+          <span class="lots-detail-label" data-i18n="lots_front">Frente</span>
+          <span class="lots-detail-value" data-i18n="lots_front_val"><span>20</span> metros</span>
         </div>
         <div class="lots-detail">
-          <span class="lots-detail-label">Precio</span>
-          <span class="lots-detail-value">Desde <span>$190.700</span> USD</span>
+          <span class="lots-detail-label" data-i18n="lots_price">Precio</span>
+          <span class="lots-detail-value" data-i18n="lots_price_val">Desde <span>$190.700</span> USD</span>
         </div>
         <div class="lots-detail">
-          <span class="lots-detail-label">Entrada</span>
-          <span class="lots-detail-value">Desde <span>$57.300</span> USD</span>
+          <span class="lots-detail-label" data-i18n="lots_down">Entrada</span>
+          <span class="lots-detail-value" data-i18n="lots_down_val">Desde <span>$57.300</span> USD</span>
         </div>
         <div class="lots-detail" style="border:none">
-          <span class="lots-detail-label">Financiamiento</span>
-          <span class="lots-detail-value"><span>Disponible</span></span>
+          <span class="lots-detail-label" data-i18n="lots_finance">Financiamiento</span>
+          <span class="lots-detail-value"><span data-i18n="lots_finance_val">Disponible</span></span>
         </div>
       </div>
       <div class="lots-cta">
-        <p class="lots-cta-text">
+        <p class="lots-cta-text" data-i18n="lots_cta_text">
           Quedan pocas parcelas disponibles en esta fase del desarrollo. Solicite el catálogo completo con el plano maestro, dimensiones y orientación de cada lote.
         </p>
-        <a href="#contacto" class="btn-primary">
+        <a href="#contacto" class="btn-primary" data-i18n="lots_cta_btn">
           Solicitar catálogo completo <span class="btn-arrow"></span>
         </a>
       </div>
@@ -1567,12 +1641,12 @@ body {
     <div class="lifestyle-header">
       <div class="intro-tag reveal" style="justify-content:center">
         <span class="intro-tag-line"></span>
-        <span class="intro-tag-text">Estilo de Vida</span>
+        <span class="intro-tag-text" data-i18n="life_tag">Estilo de Vida</span>
       </div>
-      <h2 class="lifestyle-heading reveal reveal-delay-1">
+      <h2 class="lifestyle-heading reveal reveal-delay-1" data-i18n="life_heading">
         Más que un terreno, <em>un estilo de vida</em>
       </h2>
-      <p class="lifestyle-sub reveal reveal-delay-2">
+      <p class="lifestyle-sub reveal reveal-delay-2" data-i18n="life_sub">
         Altos del Bosque le ofrece el equilibrio perfecto entre la serenidad del entorno natural y la conectividad con todo lo que Cuenca y los Andes tienen para ofrecer.
       </p>
     </div>
@@ -1582,36 +1656,36 @@ body {
         <div class="lifestyle-card-bg"></div>
         <div class="lifestyle-card-overlay"></div>
         <div class="lifestyle-card-content">
-          <div class="lifestyle-card-tag">Naturaleza</div>
-          <h3 class="lifestyle-card-title">Rodeado de Bosque Nativo</h3>
-          <p class="lifestyle-card-text">Vegetación nativa preservada, topografía ondulada y vistas panorámicas a los Andes que convierten cada terreno en un refugio privado.</p>
+          <div class="lifestyle-card-tag" data-i18n="life_c1_tag">Naturaleza</div>
+          <h3 class="lifestyle-card-title" data-i18n="life_c1_title">Rodeado de Bosque Nativo</h3>
+          <p class="lifestyle-card-text" data-i18n="life_c1_text">Vegetación nativa preservada, topografía ondulada y vistas panorámicas a los Andes que convierten cada terreno en un refugio privado.</p>
         </div>
       </div>
       <div class="lifestyle-card lifestyle-card-2 reveal reveal-delay-1">
         <div class="lifestyle-card-bg"></div>
         <div class="lifestyle-card-overlay"></div>
         <div class="lifestyle-card-content">
-          <div class="lifestyle-card-tag">Gastronomía</div>
-          <h3 class="lifestyle-card-title">Sabores de los Andes</h3>
-          <p class="lifestyle-card-text">Una escena culinaria emergente que combina ingredientes andinos ancestrales con técnicas contemporáneas. Mercados artesanales, restaurantes premiados y cafés de especialidad.</p>
+          <div class="lifestyle-card-tag" data-i18n="life_c2_tag">Gastronomía</div>
+          <h3 class="lifestyle-card-title" data-i18n="life_c2_title">Sabores de los Andes</h3>
+          <p class="lifestyle-card-text" data-i18n="life_c2_text">Una escena culinaria emergente que combina ingredientes andinos ancestrales con técnicas contemporáneas. Mercados artesanales, restaurantes premiados y cafés de especialidad.</p>
         </div>
       </div>
       <div class="lifestyle-card lifestyle-card-3 reveal">
         <div class="lifestyle-card-bg"></div>
         <div class="lifestyle-card-overlay"></div>
         <div class="lifestyle-card-content">
-          <div class="lifestyle-card-tag">Aventura</div>
-          <h3 class="lifestyle-card-title">Puerta a los Andes</h3>
-          <p class="lifestyle-card-text">Senderismo en El Cajas, ruinas incaicas de Ingapirca, termas naturales en Baños, observación de aves y ciclismo de montaña — todo a su alcance.</p>
+          <div class="lifestyle-card-tag" data-i18n="life_c3_tag">Aventura</div>
+          <h3 class="lifestyle-card-title" data-i18n="life_c3_title">Puerta a los Andes</h3>
+          <p class="lifestyle-card-text" data-i18n="life_c3_text">Senderismo en El Cajas, ruinas incaicas de Ingapirca, termas naturales en Baños, observación de aves y ciclismo de montaña — todo a su alcance.</p>
         </div>
       </div>
       <div class="lifestyle-card lifestyle-card-4 reveal reveal-delay-1">
         <div class="lifestyle-card-bg"></div>
         <div class="lifestyle-card-overlay"></div>
         <div class="lifestyle-card-content">
-          <div class="lifestyle-card-tag">Cultura</div>
-          <h3 class="lifestyle-card-title">Herencia y Artesanía</h3>
-          <p class="lifestyle-card-text">Cuna del sombrero de paja toquilla (Panama hat), textiles ancestrales, cerámica artesanal y una vida cultural vibrante con festivales, galerías y música en vivo.</p>
+          <div class="lifestyle-card-tag" data-i18n="life_c4_tag">Cultura</div>
+          <h3 class="lifestyle-card-title" data-i18n="life_c4_title">Herencia y Artesanía</h3>
+          <p class="lifestyle-card-text" data-i18n="life_c4_text">Cuna del sombrero de paja toquilla (Panama hat), textiles ancestrales, cerámica artesanal y una vida cultural vibrante con festivales, galerías y música en vivo.</p>
         </div>
       </div>
     </div>
@@ -1627,15 +1701,15 @@ body {
       <div>
         <div class="intro-tag reveal">
           <span class="intro-tag-line"></span>
-          <span class="intro-tag-text">Su Inversión</span>
+          <span class="intro-tag-text" data-i18n="invest_tag">Su Inversión</span>
         </div>
-        <h2 class="invest-heading reveal reveal-delay-1">
+        <h2 class="invest-heading reveal reveal-delay-1" data-i18n="invest_heading">
           Una inversión con <em>visión de futuro</em>
         </h2>
-        <p class="invest-text reveal reveal-delay-2">
+        <p class="invest-text reveal reveal-delay-2" data-i18n="invest_text1">
           Río Amarillo es uno de los corredores de mayor plusvalía en Cuenca, con un crecimiento sostenido que refleja la demanda creciente de propiedades premium en la ciudad. Altos del Bosque combina ubicación privilegiada con infraestructura completa y flexibilidad constructiva.
         </p>
-        <p class="invest-text reveal reveal-delay-3">
+        <p class="invest-text reveal reveal-delay-3" data-i18n="invest_text2">
           Ya sea que busque construir la residencia de sus sueños o una inversión inmobiliaria sólida, cada lote ofrece el potencial de construir hasta dos viviendas con línea de fábrica aprobada.
         </p>
       </div>
@@ -1643,29 +1717,29 @@ body {
         <div class="invest-highlight">
           <div class="invest-highlight-icon">&#9670;</div>
           <div>
-            <div class="invest-highlight-title">Alta Plusvalía</div>
-            <p class="invest-highlight-text">Ubicación en uno de los sectores de mayor apreciación de la ciudad, con crecimiento continuo del valor inmobiliario.</p>
+            <div class="invest-highlight-title" data-i18n="invest_h1_title">Alta Plusvalía</div>
+            <p class="invest-highlight-text" data-i18n="invest_h1_text">Ubicación en uno de los sectores de mayor apreciación de la ciudad, con crecimiento continuo del valor inmobiliario.</p>
           </div>
         </div>
         <div class="invest-highlight">
           <div class="invest-highlight-icon">&#9670;</div>
           <div>
-            <div class="invest-highlight-title">Infraestructura Completa</div>
-            <p class="invest-highlight-text">Vías asfaltadas, servicios básicos, alumbrado y conectividad — listo para construir sin costos ocultos de urbanización.</p>
+            <div class="invest-highlight-title" data-i18n="invest_h2_title">Infraestructura Completa</div>
+            <p class="invest-highlight-text" data-i18n="invest_h2_text">Vías asfaltadas, servicios básicos, alumbrado y conectividad — listo para construir sin costos ocultos de urbanización.</p>
           </div>
         </div>
         <div class="invest-highlight">
           <div class="invest-highlight-icon">&#9670;</div>
           <div>
-            <div class="invest-highlight-title">Flexibilidad Constructiva</div>
-            <p class="invest-highlight-text">Línea de fábrica aprobada para una o dos viviendas por lote. Ideal para residencia propia, inversión en renta o desarrollo.</p>
+            <div class="invest-highlight-title" data-i18n="invest_h3_title">Flexibilidad Constructiva</div>
+            <p class="invest-highlight-text" data-i18n="invest_h3_text">Línea de fábrica aprobada para una o dos viviendas por lote. Ideal para residencia propia, inversión en renta o desarrollo.</p>
           </div>
         </div>
         <div class="invest-highlight">
           <div class="invest-highlight-icon">&#9670;</div>
           <div>
-            <div class="invest-highlight-title">Financiamiento Directo</div>
-            <p class="invest-highlight-text">Opciones de financiamiento disponibles con entradas desde $57.300 USD. Le acompañamos en cada paso del proceso.</p>
+            <div class="invest-highlight-title" data-i18n="invest_h4_title">Financiamiento Directo</div>
+            <p class="invest-highlight-text" data-i18n="invest_h4_text">Opciones de financiamiento disponibles con entradas desde $57.300 USD. Le acompañamos en cada paso del proceso.</p>
           </div>
         </div>
       </div>
@@ -1682,12 +1756,12 @@ body {
       <div>
         <div class="intro-tag reveal">
           <span class="intro-tag-line"></span>
-          <span class="intro-tag-text">Contacto</span>
+          <span class="intro-tag-text" data-i18n="contact_tag">Contacto</span>
         </div>
-        <h2 class="contact-heading reveal reveal-delay-1">
+        <h2 class="contact-heading reveal reveal-delay-1" data-i18n="contact_heading">
           Dé el <em>primer paso</em>
         </h2>
-        <p class="contact-text reveal reveal-delay-2">
+        <p class="contact-text reveal reveal-delay-2" data-i18n="contact_text">
           Agende una visita privada al desarrollo y descubra en persona por qué Altos del Bosque es el lugar donde comienza su próximo capítulo. Nuestro equipo lo acompañará desde la selección de su terreno hasta la planificación de su proyecto.
         </p>
         <div class="contact-details reveal reveal-delay-3">
@@ -1705,7 +1779,7 @@ body {
               <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="10" r="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <div>
-              <div class="contact-detail-label">Ubicación</div>
+              <div class="contact-detail-label" data-i18n="contact_loc_label">Ubicación</div>
               <div class="contact-detail-value">Río Amarillo, Cuenca, Ecuador</div>
             </div>
           </div>
@@ -1714,8 +1788,8 @@ body {
               <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-linecap="round" stroke-linejoin="round"/><polyline points="12 6 12 12 16 14" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <div>
-              <div class="contact-detail-label">Visitas</div>
-              <div class="contact-detail-value">Lunes a Sábado, previa cita</div>
+              <div class="contact-detail-label" data-i18n="contact_visit_label">Visitas</div>
+              <div class="contact-detail-value" data-i18n="contact_visit_val">Lunes a Sábado, previa cita</div>
             </div>
           </div>
         </div>
@@ -1724,36 +1798,36 @@ body {
       <form class="contact-form reveal" id="contactForm" onsubmit="handleSubmit(event)">
         <div class="form-row">
           <div class="form-group">
-            <label for="nombre">Nombre</label>
-            <input type="text" id="nombre" placeholder="Su nombre completo" required>
+            <label for="nombre" data-i18n="form_name">Nombre</label>
+            <input type="text" id="nombre" data-i18n-placeholder="form_name_ph" placeholder="Su nombre completo" required>
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email" placeholder="correo@ejemplo.com" required>
+            <input type="email" id="email" data-i18n-placeholder="form_email_ph" placeholder="correo@ejemplo.com" required>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label for="telefono">Teléfono</label>
+            <label for="telefono" data-i18n="form_phone">Teléfono</label>
             <input type="tel" id="telefono" placeholder="+593 999 999 999">
           </div>
           <div class="form-group">
-            <label for="interes">Interés</label>
+            <label for="interes" data-i18n="form_interest">Interés</label>
             <select id="interes">
-              <option value="">Seleccione...</option>
-              <option value="compra">Compra para residencia</option>
-              <option value="inversion">Inversión</option>
-              <option value="construccion">Compra + construcción</option>
-              <option value="info">Información general</option>
+              <option value="" data-i18n="form_select">Seleccione...</option>
+              <option value="compra" data-i18n="form_opt1">Compra para residencia</option>
+              <option value="inversion" data-i18n="form_opt2">Inversión</option>
+              <option value="construccion" data-i18n="form_opt3">Compra + construcción</option>
+              <option value="info" data-i18n="form_opt4">Información general</option>
             </select>
           </div>
         </div>
         <div class="form-group">
-          <label for="mensaje">Mensaje</label>
-          <textarea id="mensaje" placeholder="Cuéntenos sobre su proyecto o haga sus preguntas..."></textarea>
+          <label for="mensaje" data-i18n="form_msg">Mensaje</label>
+          <textarea id="mensaje" data-i18n-placeholder="form_msg_ph" placeholder="Cuéntenos sobre su proyecto o haga sus preguntas..."></textarea>
         </div>
         <div class="form-submit">
-          <button type="submit" class="btn-primary">
+          <button type="submit" class="btn-primary" data-i18n="form_submit">
             Enviar solicitud <span class="btn-arrow"></span>
           </button>
         </div>
@@ -1770,15 +1844,15 @@ body {
     <div class="footer-top">
       <div class="footer-logo">Altos del Bosque</div>
       <ul class="footer-links">
-        <li><a href="#vision">Visión</a></li>
+        <li><a href="#vision" data-i18n="nav_vision">Visión</a></li>
         <li><a href="#cuenca">Cuenca</a></li>
-        <li><a href="#desarrollo">Desarrollo</a></li>
-        <li><a href="#estilo">Estilo de Vida</a></li>
-        <li><a href="#inversion">Inversión</a></li>
-        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#desarrollo" data-i18n="nav_development">Desarrollo</a></li>
+        <li><a href="#estilo" data-i18n="nav_lifestyle">Estilo de Vida</a></li>
+        <li><a href="#inversion" data-i18n="nav_investment">Inversión</a></li>
+        <li><a href="#contacto" data-i18n="nav_contact">Contacto</a></li>
       </ul>
     </div>
-    <p class="footer-copy">&copy; 2026 Altos del Bosque. Todos los derechos reservados. Río Amarillo, Cuenca, Ecuador.</p>
+    <p class="footer-copy" data-i18n="footer_copy">&copy; 2026 Altos del Bosque. Todos los derechos reservados. Río Amarillo, Cuenca, Ecuador.</p>
   </div>
 </footer>
 
@@ -1867,6 +1941,176 @@ window.addEventListener('scroll', () => {
   const heroBg = document.querySelector('.hero-bg');
   if (heroBg && scroll < window.innerHeight) {
     heroBg.style.transform = `translateY(${scroll * 0.3}px)`;
+  }
+});
+
+// ═══════════════════════════════════════════════
+// LANGUAGE TOGGLE — ES / EN
+// ═══════════════════════════════════════════════
+const translations = {
+  en: {
+    // Nav
+    nav_vision: "Vision",
+    nav_development: "Development",
+    nav_lifestyle: "Lifestyle",
+    nav_investment: "Investment",
+    nav_contact: "Contact",
+    // Hero
+    hero_badge: "Exclusive Development · Río Amarillo",
+    hero_title: 'Where the Andes<br>meet<br><em>your vision</em>',
+    hero_subtitle: "Lots from 700\u00A0m² across six private hectares, ten minutes from the historic center of Cuenca — a UNESCO World Heritage City.",
+    hero_cta: 'Request catalog <span class="btn-arrow"></span>',
+    hero_cta2: 'Discover more <span class="btn-arrow"></span>',
+    // Vision
+    vision_tag: "The Vision",
+    vision_heading: 'An exceptional home begins with an <em>exceptional lot</em>',
+    vision_text1: "Nestled in the hills of Río Amarillo, Altos del Bosque is a private six-hectare development designed for those who understand that quality of life is built from the ground up — literally.",
+    vision_text2: "Here, the Andean landscape becomes the canvas for your future home. Each lot has been plotted to maximize panoramic views, natural light, and privacy — giving you the freedom to create the residence you\u2019ve always envisioned: whether a contemporary glass-walled villa framing the mountains, or a country home with gardens merging into the surrounding forest.",
+    vision_label: "6 hectares",
+    // Cuenca
+    cuenca_tag: "The City",
+    cuenca_heading: 'Cuenca: <em>The Athens of the Andes</em>',
+    cuenca_sub: "Declared a UNESCO World Cultural Heritage Site in 1999, Cuenca is recognized worldwide for its colonial architecture, eternal spring climate, emerging gastronomy, and a growing international community that has chosen it as home.",
+    cuenca_stat1: "World Heritage Site",
+    cuenca_stat2: "Eternal spring climate",
+    cuenca_stat3: "Altitude above sea level",
+    cuenca_stat4: "To the historic center",
+    cuenca_f1_title: "Living Heritage",
+    cuenca_f1_text: "Cobblestone streets, centuries-old cathedrals, artisan markets, and a vibrant cultural scene blending indigenous tradition with Spanish colonial influences.",
+    cuenca_f2_title: "Extraordinary Nature",
+    cuenca_f2_text: "30 minutes from Cajas National Park, with over 235 glacial lakes, Andean páramos, and a biodiversity that includes the Andean condor and giant hummingbirds.",
+    cuenca_f3_title: "International Community",
+    cuenca_f3_text: "Consistently recognized as one of the world\u2019s best retirement destinations. A diverse expatriate community that enriches the city\u2019s social and cultural life.",
+    // Development
+    dev_tag: "The Development",
+    dev_heading: 'Designed for those who value <em>excellence</em>',
+    dev_sub: "Altos del Bosque is not simply a development — it is a commitment to quality. Every element has been planned to protect the value of your investment and ensure a living environment that is a privilege.",
+    dev_f1_title: "Square meters per lot",
+    dev_f1_text: "Generous lots with 20-meter frontage enabling ambitious architectural designs: expansive gardens, swimming pool, terraces, and outdoor living areas.",
+    dev_f2_title: "Hectares of developed land",
+    dev_f2_text: "Complete infrastructure: paved roads, sidewalks, street lighting, potable water, sewage, telephone, and data connectivity.",
+    dev_f3_title: "Homes per lot",
+    dev_f3_text: "Approved building permits allowing one or two homes per lot, adapting the project to your family or investment needs.",
+    lots_title: 'Available <em>lots</em>',
+    lots_area: "Area",
+    lots_area_val: 'From <span>693</span> to <span>731</span> m²',
+    lots_front: "Frontage",
+    lots_front_val: '<span>20</span> meters',
+    lots_price: "Price",
+    lots_price_val: 'From <span>$190,700</span> USD',
+    lots_down: "Down payment",
+    lots_down_val: 'From <span>$57,300</span> USD',
+    lots_finance: "Financing",
+    lots_finance_val: "Available",
+    lots_cta_text: "Limited lots remain available in this phase of the development. Request the complete catalog with the master plan, dimensions, and orientation of each lot.",
+    lots_cta_btn: 'Request full catalog <span class="btn-arrow"></span>',
+    // Lifestyle
+    life_tag: "Lifestyle",
+    life_heading: 'More than a lot, <em>a way of life</em>',
+    life_sub: "Altos del Bosque offers the perfect balance between the serenity of the natural surroundings and connectivity to everything Cuenca and the Andes have to offer.",
+    life_c1_tag: "Nature",
+    life_c1_title: "Surrounded by Native Forest",
+    life_c1_text: "Preserved native vegetation, undulating topography, and panoramic Andes views that turn each lot into a private retreat.",
+    life_c2_tag: "Gastronomy",
+    life_c2_title: "Flavors of the Andes",
+    life_c2_text: "An emerging culinary scene blending ancestral Andean ingredients with contemporary techniques. Artisan markets, award-winning restaurants, and specialty coffee.",
+    life_c3_tag: "Adventure",
+    life_c3_title: "Gateway to the Andes",
+    life_c3_text: "Hiking in El Cajas, Inca ruins at Ingapirca, natural hot springs in Baños, birdwatching, and mountain biking — all within reach.",
+    life_c4_tag: "Culture",
+    life_c4_title: "Heritage & Craftsmanship",
+    life_c4_text: "Birthplace of the paja toquilla hat (Panama hat), ancestral textiles, artisan ceramics, and a vibrant cultural life with festivals, galleries, and live music.",
+    // Investment
+    invest_tag: "Your Investment",
+    invest_heading: 'An investment with <em>a vision for the future</em>',
+    invest_text1: "Río Amarillo is one of Cuenca\u2019s highest-appreciation corridors, with sustained growth reflecting increasing demand for premium properties in the city. Altos del Bosque combines a privileged location with complete infrastructure and building flexibility.",
+    invest_text2: "Whether you\u2019re looking to build the home of your dreams or a solid real estate investment, each lot offers the potential to build up to two homes with approved building permits.",
+    invest_h1_title: "High Appreciation",
+    invest_h1_text: "Located in one of the city\u2019s highest-growth sectors, with continuous real estate value appreciation.",
+    invest_h2_title: "Complete Infrastructure",
+    invest_h2_text: "Paved roads, utilities, street lighting, and connectivity — ready to build with no hidden development costs.",
+    invest_h3_title: "Building Flexibility",
+    invest_h3_text: "Approved building permits for one or two homes per lot. Ideal for personal residence, rental investment, or development.",
+    invest_h4_title: "Direct Financing",
+    invest_h4_text: "Financing options available with down payments from $57,300 USD. We accompany you every step of the way.",
+    // Contact
+    contact_tag: "Contact",
+    contact_heading: 'Take the <em>first step</em>',
+    contact_text: "Schedule a private visit to the development and discover in person why Altos del Bosque is where your next chapter begins. Our team will accompany you from lot selection through project planning.",
+    contact_loc_label: "Location",
+    contact_visit_label: "Visits",
+    contact_visit_val: "Monday to Saturday, by appointment",
+    // Form
+    form_name: "Name",
+    form_name_ph: "Your full name",
+    form_email_ph: "email@example.com",
+    form_phone: "Phone",
+    form_interest: "Interest",
+    form_select: "Select...",
+    form_opt1: "Purchase for residence",
+    form_opt2: "Investment",
+    form_opt3: "Purchase + construction",
+    form_opt4: "General information",
+    form_msg: "Message",
+    form_msg_ph: "Tell us about your project or ask your questions...",
+    form_submit: 'Send inquiry <span class="btn-arrow"></span>',
+    // Footer
+    footer_copy: "\u00A9 2026 Altos del Bosque. All rights reserved. Río Amarillo, Cuenca, Ecuador."
+  }
+};
+
+// Store original Spanish content
+const spanishContent = {};
+let currentLang = 'es';
+
+function storeSpanish() {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    spanishContent[el.getAttribute('data-i18n')] = el.innerHTML;
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    spanishContent[el.getAttribute('data-i18n-placeholder') + '_ph'] = el.placeholder;
+  });
+}
+
+function setLanguage(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  const toggle = document.getElementById('langToggle');
+  toggle.setAttribute('data-lang', lang);
+  document.getElementById('langEs').classList.toggle('active', lang === 'es');
+  document.getElementById('langEn').classList.toggle('active', lang === 'en');
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (lang === 'en' && translations.en[key]) {
+      el.innerHTML = translations.en[key];
+    } else if (lang === 'es' && spanishContent[key]) {
+      el.innerHTML = spanishContent[key];
+    }
+  });
+
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (lang === 'en' && translations.en[key]) {
+      el.placeholder = translations.en[key];
+    } else if (lang === 'es' && spanishContent[key + '_ph']) {
+      el.placeholder = spanishContent[key + '_ph'];
+    }
+  });
+}
+
+// Initialize
+storeSpanish();
+
+// Toggle handler
+document.getElementById('langToggle').addEventListener('click', () => {
+  setLanguage(currentLang === 'es' ? 'en' : 'es');
+});
+
+document.getElementById('langToggle').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    setLanguage(currentLang === 'es' ? 'en' : 'es');
   }
 });
 </script>
