@@ -2,7 +2,7 @@
 
 **Website for Altos del Bosque — Exclusive Residential Development in Cuenca, Ecuador**
 
-🌐 **Live site:** [[https://altosdelbosque.github.io/altosdelbosque](https://altosdelbosque.github.io/altosdelbosque)](https://ropaes1.github.io/altosdelbosque/)
+🌐 **Live site:** [(https://ropaes1.github.io/altosdelbosque/)]
 
 ---
 
